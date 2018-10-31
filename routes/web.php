@@ -5,38 +5,15 @@ use App\Subscriber;
 
     Route::get('/','SubscriberController@index');
 
-    Route::delete('/users/{id}','SubscriberController@destroy');
+    Route::post('/','SubscriberController@create');
 
-    Route::get('users/search/{name}','SubscriberController@search');
 
-    Route::get('users/{id}', 'SubscriberController@show');
+Auth::routes();
 
-    Route::post('users/{id}', 'SubscriberController@update')->name('users.update');
-    /*
-    Route::put('api/users/{id}', function (Request $request, $id){
+Route::get('/home', 'HomeController@index')->name('home');
 
-        $phone_book_user = new PhoneBookModel;
-        $phone_book_user->name = 'xxxx';
-        $phone_book_user->phone = '1234567890';
-        $phone_book_user->save();
-        return redirect('/api/users/');
-    });
-    */
-    Route::post('/',function (Request $request){
-        $validator = Validator::make($request->all(),[
-            'name'=>'required|max:255',
-            'email'=>'required|max:255'
-        ]);
-        if($validator->fails()){
-            return redirect('/')
-                ->withInput()
-                ->withErrors($validator);
-        }
-        $subscribers = new Subscriber;
-        $subscribers->name = $request->name;
-        $subscribers->email = $request->email;
-        $subscribers->save();
-        return redirect('/');
-    });
+Route::delete('/{id}','HomeController@destroy');
 
-//Route::resource('api/users','PhoneBookController');
+Route::get('/{id}', 'HomeController@show');
+
+Route::post('/{id}', 'HomeController@update')->name('users.update');

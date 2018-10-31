@@ -6,22 +6,22 @@
             <div class="card-body">
                 <table class="table table-striped task-table">
                     <thead>
-                    <th>EDIT PHONE BOOK USER</th>
+                    <th>EDIT SUBSCRIBER</th>
                     </thead>
 
                     <tbody>
-                    @foreach($phone_book_users as $phone_book_user)
+                    @foreach($subscribers as $subscriber)
                         <tr>
 
                             <td class="table-text">
-                                <div>{{$phone_book_user->id}}</div>
+                                <div>{{$subscriber->id}}</div>
                             </td>
                             <td class="table-text">
-                                <div>{{$phone_book_user->name}}</div>
+                                <div>{{$subscriber->name}}</div>
                             </td>
 
                             <td class="table-text">
-                                <div>{{$phone_book_user->phone}}</div>
+                                <div>{{$subscriber->email}}</div>
                             </td>
 
                         </tr>
@@ -35,7 +35,7 @@
                         <td>
                             @include('errors')
 
-                            <form action="{{route('users.update', $phone_book_user->id)}}" method="POST" class="form-horizontal">
+                            <form action="{{route('users.update', $subscriber->id)}}" method="POST" class="form-horizontal">
                                 {{csrf_field()}}
 
                                 <div class="row">
@@ -43,10 +43,10 @@
                                         <div class="row">
 
                                             <div class="col-sm-3">
-                                                <input type="text" name="name" id="task-name" class="form-control" value={{ $phone_book_user->name }}>
+                                                <input type="text" name="name" id="task-name" class="form-control" value={{ $subscriber->name }}>
                                             </div>
                                             <div class="col-sm-3">
-                                                <input type="text" name="phone" id="task-phone" class="form-control" value={{ $phone_book_user->phone }}>
+                                                <input type="text" name="phone" id="task-phone" class="form-control" value={{ $subscriber->email }}>
                                             </div>
                                             <div class="col-sm-3">
                                                 <button type="submit" id="task-button" class="btn btn-success">UPDATE</button>
