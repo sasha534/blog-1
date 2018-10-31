@@ -33,7 +33,6 @@ class HomeController extends Controller
 
     public function show($id)
     {
-        //echo __METHOD__;
         $subscribers = Subscriber::where('id',$id)->get();
         return view('users-show',[
             'subscribers'=>$subscribers
@@ -54,7 +53,7 @@ class HomeController extends Controller
 
         $subscribers->save();
 
-        return redirect('/api/users/')->with('Success', 'Subscriber has been updated');
+        return redirect('/home')->with('Success', 'Subscriber has been updated');
     }
 
     public function destroy($id)

@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
-use App\Subscriber;
-
     Route::get('/','SubscriberController@index');
 
     Route::post('/','SubscriberController@create');
+
+    //Route::get('/{id}', 'ShowController@show');
 
 
 Auth::routes();
